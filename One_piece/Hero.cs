@@ -26,13 +26,15 @@ namespace One_piece
             {
                 herotexture = texture;
                 animatie = new Animatie();
-                animatie.AadFrame(new AnimationFrames(new Rectangle(0, 0, 78, 87)));
-                animatie.AadFrame(new AnimationFrames(new Rectangle(78, 0, 78, 87)));
-                animatie.AadFrame(new AnimationFrames(new Rectangle(156, 0, 78, 87)));
-                animatie.AadFrame(new AnimationFrames(new Rectangle(234, 0, 78, 87)));
-                animatie.AadFrame(new AnimationFrames(new Rectangle(312, 0, 78, 87)));
-                //animatie.AadFrame(new AnimationFrame(new Rectangle(900, 0, 120, 140)));
-                positie = new Vector2(0, 1);
+            animatie.AadFrame(new AnimationFrames(new Rectangle(0, 0, 78, 87)));
+            /*
+            animatie.AadFrame(new AnimationFrames(new Rectangle(78, 87, 78, 87)));
+            animatie.AadFrame(new AnimationFrames(new Rectangle(156, 0, 78, 87)));
+            animatie.AadFrame(new AnimationFrames(new Rectangle(234, 0, 78, 87)));
+            animatie.AadFrame(new AnimationFrames(new Rectangle(312, 0, 78, 87)));
+            //animatie.AadFrame(new AnimationFrame(new Rectangle(900, 0, 120, 140)));
+            */
+            positie = new Vector2(0, 1);
                 snelheid = new Vector2(1, 1);
                 versnelling = new Vector2(0.1f, 0.1f);
             
@@ -52,6 +54,10 @@ namespace One_piece
                 if (state.IsKeyDown(Keys.Right))
                 {
                 positie.X += 1;
+                animatie.AadFrame(new AnimationFrames(new Rectangle(78, 87, 78, 87)));
+                animatie.AadFrame(new AnimationFrames(new Rectangle(156, 87, 78, 87)));
+                animatie.AadFrame(new AnimationFrames(new Rectangle(234, 87, 78, 87)));
+                animatie.AadFrame(new AnimationFrames(new Rectangle(312, 87, 78, 87)));
                 }
 
             if (state.IsKeyDown(Keys.Up))
@@ -59,19 +65,14 @@ namespace One_piece
                 positie.Y -= 1;
             }
 
-            
+
+           
+
             // Move(GetMouseState());
             animatie.Update(gameTime);
             }
 
-        /*
-            private Vector2 GetMouseState()
-            {
-                MouseState state = Mouse.GetState();
-                mouseVector = new Vector2(state.X, state.Y);
-                return mouseVector;
-            }
-        */
+        
             private void Move(Vector2 mouse)
             {
 
