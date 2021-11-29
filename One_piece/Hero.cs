@@ -8,6 +8,7 @@ using One_piece.Animation;
 using SharpDX.DXGI;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Input;
+using One_piece.Input;
 
 namespace One_piece
 {
@@ -20,13 +21,13 @@ namespace One_piece
             private Vector2 positie;
             private Vector2 snelheid;
             private Vector2 versnelling;
-            //private Vector2 mouseVector;
+            InputReader inputReader;
 
-            public Hero(Texture2D texture)
+            public Hero(Texture2D texture, InputReader reader )
             {
                 herotexture = texture;
                 animatie = new Animatie();
-            animatie.AadFrame(new AnimationFrames(new Rectangle(0, 0, 78, 87)));
+           // animatie.AadFrame(new AnimationFrames(new Rectangle(0, 0, 78, 87)));
             /*
             animatie.AadFrame(new AnimationFrames(new Rectangle(78, 87, 78, 87)));
             animatie.AadFrame(new AnimationFrames(new Rectangle(156, 0, 78, 87)));
@@ -37,36 +38,16 @@ namespace One_piece
             positie = new Vector2(0, 1);
                 snelheid = new Vector2(1, 1);
                 versnelling = new Vector2(0.1f, 0.1f);
-            
+            // lees de input van de hero class 
+            this.inputReader = reader;
 
             
             }
             public void Update(GameTime gameTime)
             {
-            var direction = Vector2.Zero;
-                KeyboardState state = Keyboard.GetState();
-                if (state.IsKeyDown(Keys.Down))
-                {
-                positie.Y += 1;   
-                }
-               
+            var direction = inputReader.ReadInput();
 
-                if (state.IsKeyDown(Keys.Right))
-                {
-                positie.X += 1;
-                animatie.AadFrame(new AnimationFrames(new Rectangle(78, 87, 78, 87)));
-                animatie.AadFrame(new AnimationFrames(new Rectangle(156, 87, 78, 87)));
-                animatie.AadFrame(new AnimationFrames(new Rectangle(234, 87, 78, 87)));
-                animatie.AadFrame(new AnimationFrames(new Rectangle(312, 87, 78, 87)));
-                }
-
-            if (state.IsKeyDown(Keys.Up))
-            {
-                positie.Y -= 1;
-            }
-
-
-           
+            positie += direction;
 
             // Move(GetMouseState());
             animatie.Update(gameTime);
@@ -82,21 +63,21 @@ namespace One_piece
                  direction = Vector2.Multiply(direction, 0.5f); 
 
                 snelheid += direction;
-                snelheid = Limit(snelheid, 5);
+                snelheid = Limit(snelheid, 10);
                 positie += snelheid;
-                if (positie.X > 600 || positie.X < 0)
+                if (positie.X > 500 || positie.X < 0)
                 {
-                    snelheid.X *= -1;
-                    versnelling *= -1;
+                    snelheid.X += -1;
+                    versnelling.X += -1;
                 }
-                if (positie.Y > 250 || positie.Y < 0)
+                if (positie.Y > 300 || positie.Y < 0)
                 {
-                    snelheid.Y *= -1;
-                    versnelling *= -1;
+                    snelheid.Y += -1;
+                    versnelling.Y += -1;
                 }
             }
 
-            private Vector2 Limit(Vector2 v, float max)
+           private Vector2 Limit(Vector2 v, float max)
             {
                 if (v.Length() > max)
                 {
@@ -106,6 +87,7 @@ namespace One_piece
                 }
                 return v;
             }
+        
 
             public void Draw(SpriteBatch spriteBatch)
             {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using One_piece.Input;
 
 namespace One_piece
 {
@@ -38,7 +39,7 @@ namespace One_piece
 
         private void InitializeGameObjects()
         {
-            hero = new Hero(_texture);
+            hero = new Hero(_texture, new Keyboardreader());
         }
 
         protected override void Update(GameTime gameTime)
@@ -46,6 +47,7 @@ namespace One_piece
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            
             // TODO: Add your update logic here
             hero.Update(gameTime);
             base.Update(gameTime);
