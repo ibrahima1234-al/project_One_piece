@@ -41,6 +41,7 @@ namespace One_piece
             }
             public void Update(GameTime gameTime)
             {
+            var direction = Vector2.Zero;
                 KeyboardState state = Keyboard.GetState();
                 if (state.IsKeyDown(Keys.Down))
                 {
@@ -57,6 +58,8 @@ namespace One_piece
             {
                 positie.Y -= 1;
             }
+
+            
             // Move(GetMouseState());
             animatie.Update(gameTime);
             }
