@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/School/AP2021-2022/gamedev/project/One_piece/One_piece/Content/james.png</SourceFile>
-  <SourceTime>2021-11-23T16:27:57.4612962+01:00</SourceTime>
-  <DestFile>D:/School/AP2021-2022/gamedev/project/One_piece/One_piece/Content/bin/Windows/Content/james.xnb</DestFile>
-  <DestTime>2021-11-25T19:28:35.9505791+01:00</DestTime>
+  <SourceFile>C:/Users/shanq/OneDrive - AP Hogeschool Antwerpen/Documenten/Github/project_One_piece/One_piece/Content/james.png</SourceFile>
+  <SourceTime>2021-11-29T08:48:32.5727149+01:00</SourceTime>
+  <DestFile>C:/Users/shanq/OneDrive - AP Hogeschool Antwerpen/Documenten/Github/project_One_piece/One_piece/Content/bin/Windows/Content/james.xnb</DestFile>
+  <DestTime>2021-11-30T13:37:55.042191+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T18:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

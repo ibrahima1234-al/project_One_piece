@@ -12,7 +12,7 @@ namespace One_piece.Animation
         
         private List<AnimationFrames> frames;
         
-        private int counter;
+        private int counter = 0;
         private double framemovement = 0;
         public Animatie()
         {

@@ -4,18 +4,19 @@ using One_piece.Animation;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using One_piece.Animation;
+
 
 namespace One_piece.Input
 {
-    public class Keyboardreader : InputReader , Animatie
+    public class Keyboardreader : InputReader 
     {
+        Animatie animatie;
         //Animatie animatie;
-
+          
 
         Vector2 InputReader.ReadInput()
         {
-            animatie = new Animatie();
+             
 
 
             var direction = Vector2.Zero;
@@ -24,6 +25,7 @@ namespace One_piece.Input
             {
                 direction.Y += 1;
             }
+
 
 
             if (state.IsKeyDown(Keys.Right))
