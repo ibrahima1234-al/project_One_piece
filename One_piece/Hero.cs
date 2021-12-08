@@ -24,18 +24,20 @@ namespace One_piece
             private Vector2 versnelling;
             InputReader inputReader;
 
-            public Hero(Texture2D texture, InputReader reader )
+        public bool IsDestinationInput => inputReader.IsDestinationInput;
+        public Hero(Texture2D texture, InputReader reader )
             {
-                herotexture = texture;
+                this.herotexture = texture;
                 animatie = new Animatie();
-           // animatie.AadFrame(new AnimationFrames(new Rectangle(0, 0, 78, 87)));
-            /*
-            animatie.AadFrame(new AnimationFrames(new Rectangle(78, 87, 78, 87)));
+            animatie.AadFrame(new AnimationFrames(new Rectangle(0, 0, 78, 87)));
+           
+            /*animatie.AadFrame(new AnimationFrames(new Rectangle(78, 87, 78, 87)));
             animatie.AadFrame(new AnimationFrames(new Rectangle(156, 0, 78, 87)));
             animatie.AadFrame(new AnimationFrames(new Rectangle(234, 0, 78, 87)));
-            animatie.AadFrame(new AnimationFrames(new Rectangle(312, 0, 78, 87)));
+            animatie.AadFrame(new AnimationFrames(new Rectangle(312, 0, 78, 87)));*/
             //animatie.AadFrame(new AnimationFrame(new Rectangle(900, 0, 120, 140)));
-            */
+           
+            
             positie = new Vector2(0, 1);
                 snelheid = new Vector2(1, 1);
                 versnelling = new Vector2(0.1f, 0.1f);
@@ -50,17 +52,52 @@ namespace One_piece
 
             positie += direction;
 
-            // Move(GetMouseState());
+             Move();
             animatie.Update(gameTime);
             }
 
         
-            private void Move(Vector2 mouse)
+            private void Move()
             {
 
-                Vector2 direction = Vector2.Add(mouse, -positie);
+            
+            
+            KeyboardState state = Keyboard.GetState();
+            if (state.IsKeyDown(Keys.Down))
+            {
+               
+            }
 
-                 direction.Normalize();
+
+
+            if (state.IsKeyDown(Keys.Right))
+            {
+                
+                
+                /*animatie.AadFrame(new AnimationFrames(new Rectangle(0, 0, 78, 87)));
+                animatie.AadFrame(new AnimationFrames(new Rectangle(78, 87, 78, 87)));
+                animatie.AadFrame(new AnimationFrames(new Rectangle(156, 87, 78, 87)));
+                animatie.AadFrame(new AnimationFrames(new Rectangle(234, 87, 78, 87)));
+                animatie.AadFrame(new AnimationFrames(new Rectangle(312, 87, 78, 87)));*/
+            }
+            if (state.IsKeyDown(Keys.Right))
+            {
+               
+                /*
+                animatie.AadFrame(new AnimationFrames(new Rectangle(0, 0, 78, 87)));
+                animatie.AadFrame(new AnimationFrames(new Rectangle(78, 87, 78, 87)));
+                animatie.AadFrame(new AnimationFrames(new Rectangle(156, 87, 78, 87)));
+                animatie.AadFrame(new AnimationFrames(new Rectangle(234, 87, 78, 87)));
+                animatie.AadFrame(new AnimationFrames(new Rectangle(312, 87, 78, 87)));*/
+            }
+
+            if (state.IsKeyDown(Keys.Up))
+            {
+                
+            }
+
+            var direction = inputReader.ReadInput();
+            direction.Normalize();
                  direction = Vector2.Multiply(direction, 0.5f); 
 
                 snelheid += direction;
@@ -94,7 +131,7 @@ namespace One_piece
             {
                 // spriteBatch.Draw(herotexture, new Vector2(0, 0), animatie.curentframe.sourceRectangle, Color.White);//
 
-                spriteBatch.Draw(herotexture, positie, animatie.curentframe.sourceRectangle, Color.White);
+                spriteBatch.Draw(herotexture, positie, animatie.CurrentFrame.sourceRectangle, Color.White);
             }
         }
   }

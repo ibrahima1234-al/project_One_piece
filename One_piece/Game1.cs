@@ -25,6 +25,7 @@ namespace One_piece
             // TODO: Add your initialization logic here
 
             base.Initialize();
+            hero = new Hero(_texture, new Keyboardreader());
 
         }
 

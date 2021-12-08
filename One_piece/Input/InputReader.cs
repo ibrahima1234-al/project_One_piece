@@ -8,5 +8,7 @@ namespace One_piece.Input
     public interface InputReader
     {
         Vector2 ReadInput();
+
+        public bool IsDestinationInput { get;  }
     }
 }

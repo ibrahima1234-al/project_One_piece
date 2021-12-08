@@ -14,13 +14,14 @@ namespace One_piece.Input
         //Animatie animatie;
           
 
-        Vector2 InputReader.ReadInput()
+       public Vector2 ReadInput()
         {
              
 
 
-            var direction = Vector2.Zero;
+            Vector2 direction = Vector2.Zero;
             KeyboardState state = Keyboard.GetState();
+            //animatie.AadFrame(new AnimationFrames(new Rectangle(0, 0, 78, 87)));
             if (state.IsKeyDown(Keys.Down))
             {
                 direction.Y += 1;
@@ -31,12 +32,14 @@ namespace One_piece.Input
             if (state.IsKeyDown(Keys.Right))
             {
                 direction.X += 1;
-                //animatie.AadFrame(new AnimationFrames(new Rectangle(0, 0, 78, 87)));
+                
+                animatie.AadFrame(new AnimationFrames(new Rectangle(0, 0, 78, 87)));
                 animatie.AadFrame(new AnimationFrames(new Rectangle(78, 87, 78, 87)));
                 animatie.AadFrame(new AnimationFrames(new Rectangle(156, 87, 78, 87)));
                 animatie.AadFrame(new AnimationFrames(new Rectangle(234, 87, 78, 87)));
                 animatie.AadFrame(new AnimationFrames(new Rectangle(312, 87, 78, 87)));
             }
+            
 
             if (state.IsKeyDown(Keys.Up))
             {
@@ -45,12 +48,15 @@ namespace One_piece.Input
 
             return direction;
         }
+            
 
             public void Update(GameTime gameTime)
             {
                 animatie.Update(gameTime);
+                
             }
-        
+        public bool IsDestinationInput => false;
+
     }
 
 
